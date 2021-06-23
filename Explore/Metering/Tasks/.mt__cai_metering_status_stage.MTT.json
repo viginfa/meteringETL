@@ -1,0 +1,90 @@
+{
+  "objectInfo" : {
+    "id" : "1ujZPJSelMNgIa3yvhfs4F",
+    "name" : "mt__cai_metering_status_stage",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0126NZ0Z00000000001A"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "SOURCE: src_gen_one_row.csv  \r\nTARGET: metering_task_status_stage.csv\r\nFILTER: FALSE",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "objectRefs" : [ {
+    "id" : "8fyC7lAj9BzdPhHNp42pam",
+    "name" : "m__metering_status_template",
+    "type" : "DTEMPLATE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0126NZ1700000000000U"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "Status begin -- \nSOURCE: metering_task_status_stage.csv  \nTARGET: metering_check_load.csv\nStatus stage -- \nSOURCE: src_gen_one_row.csv  \nTARGET: metering_task_status_stage.csv\nStaus end --\nSOURCE: src_gen_one_row.csv  \nTARGET:  metering_task_status_stage.csv",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Metering/Mapping"
+  }, {
+    "id" : "aeWpJZilpsHdw82AUHn4qX",
+    "name" : "taskflow-qa-mrelpod1-r35-app01.infacloudops.net",
+    "type" : "AgentGroup",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0126NZ25000000000003"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/SYS"
+  }, {
+    "id" : "9Z4AYXu0kybkhj0wLCjf6b",
+    "name" : "CaiMeterFileConn",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0126NZ0B000000000003"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  } ]
+}

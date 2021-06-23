@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "4BdFSLPa7U2fhBUhx5zqCM",
+    "name" : "m__cai_metering_api_call",
+    "type" : "DTEMPLATE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0126NZ1700000000000V"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "QA REL -- metersubmission/infa@1234  \n{\n  body : {\n    username : metersubmission,\n    password : infa@1234\n  }\n}",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "objectRefs" : [ ]
+}

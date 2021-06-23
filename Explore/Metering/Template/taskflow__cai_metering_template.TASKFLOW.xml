@@ -1,0 +1,741 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>zFMi4tciSrZMSPf-gt-134395-2021-06-15T11:47:55.406Z::tf.xml</types1:EntryId>
+      <types1:Name>taskflow_cai_metering_template-4</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>org2</types1:CreatedBy>
+      <types1:CreationDate>2021-06-15T11:47:55Z</types1:CreationDate>
+      <types1:ModifiedBy>org2</types1:ModifiedBy>
+      <types1:ModificationDate>2021-06-15T12:02:18Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>org2</types1:PublishedBy>
+      <types1:PublicationDate>2021-06-15T12:24:05Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.taskflow_cai_metering_template-4/taskflow_cai_metering_template-4.tf.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="taskflow__cai_metering_template"
+                   name="taskflow_cai_metering_template-4"
+                   overrideAPIName="false">
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="retry" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="count api" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="count status" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Data Task STATUS BEGIN" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:mt--cai-metering-status-begin</option>
+                  </options>
+               </field>
+               <field description="" name="Data Task STAGE" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:mt-cai-metering-api-stage</option>
+                  </options>
+               </field>
+               <field description="" name="Data Task STATUS STAGE" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:mt--cai-metering-status-stage</option>
+                  </options>
+               </field>
+               <field description="" name="Data Task API" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:mt-cai-metering-api-call</option>
+                  </options>
+               </field>
+               <field description="" name="Data Task STATUS API" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:mt--cai-metering-status-end</option>
+                  </options>
+               </field>
+               <field description="" name="Data Task STATUS STAGE FAIL" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:mt--cai-metering-status-stage-fail</option>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kkxccm25" targetId="kkxccm24"/>
+               </start>
+               <assignment id="kkxccm24">
+                  <title>Assignment INIT</title>
+                  <operation source="constant" to="temp.retry">2</operation>
+                  <operation source="constant" to="temp.count status">0</operation>
+                  <operation source="constant" to="temp.count api">0</operation>
+                  <link id="kows6vgi" targetId="kkxccm2i"/>
+               </assignment>
+               <eventContainer id="kkxccm2i">
+                  <service id="kkxccm2c">
+                     <title>Data Task STATUS BEGIN</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">mt__cai_metering_status_begin</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">473LcIdIwQJfVHHXNBs1UF</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="mt--cai-metering-status-begin">temp.Data Task STATUS BEGIN</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.Data Task STATUS BEGIN/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.Data Task STATUS BEGIN/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.Data Task STATUS BEGIN/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.Data Task STATUS BEGIN/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.Data Task STATUS BEGIN/output/Task_Status">Task Status</operation>
+                        <operation source="field"
+                                   to="temp.Data Task STATUS BEGIN/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field"
+                                   to="temp.Data Task STATUS BEGIN/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field"
+                                   to="temp.Data Task STATUS BEGIN/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field"
+                                   to="temp.Data Task STATUS BEGIN/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.Data Task STATUS BEGIN/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.Data Task STATUS BEGIN/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.Data Task STATUS BEGIN/output/Error_Message">Error Message</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="kkxccm30" targetId="kkxccm2z"/>
+                  <events>
+                     <catch faultField="temp.Data Task STATUS BEGIN/fault"
+                            id="kkxccm2g"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                     <catch faultField="temp.Data Task STATUS BEGIN/fault"
+                            id="kkxccm2h"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <container id="kkxccm2z" type="exclusive">
+                  <title>Decision Begin</title>
+                  <flow id="kkxccm33">
+                     <eventContainer id="kkxccm46">
+                        <service id="kkxccm3m">
+                           <title>Data Task STAGE</title>
+                           <serviceName>ICSExecuteDataTask</serviceName>
+                           <serviceGUID/>
+                           <serviceInput>
+                              <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                              <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                              <parameter name="Task Name" source="constant" updatable="true">mt_cai_metering_api_stage</parameter>
+                              <parameter name="GUID" source="constant" updatable="true">5hIV57Zs3wkhC2rP6yWdEr</parameter>
+                              <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                              <parameter name="Has Inout Parameters" source="constant" updatable="true">true</parameter>
+                              <parameter name="taskField" source="nested">
+                                 <operation source="field" to="mt-cai-metering-api-stage">temp.Data Task STAGE</operation>
+                              </parameter>
+                           </serviceInput>
+                           <serviceOutput>
+                              <operation source="field" to="temp.Data Task STAGE/output/Object_Name">Object Name</operation>
+                              <operation source="field" to="temp.Data Task STAGE/output/Run_Id">Run Id</operation>
+                              <operation source="field" to="temp.Data Task STAGE/output/Log_Id">Log Id</operation>
+                              <operation source="field" to="temp.Data Task STAGE/output/Task_Id">Task Id</operation>
+                              <operation source="field" to="temp.Data Task STAGE/output/Task_Status">Task Status</operation>
+                              <operation source="field" to="temp.Data Task STAGE/output/Success_Source_Rows">Success Source Rows</operation>
+                              <operation source="field" to="temp.Data Task STAGE/output/Failed_Source_Rows">Failed Source Rows</operation>
+                              <operation source="field" to="temp.Data Task STAGE/output/Success_Target_Rows">Success Target Rows</operation>
+                              <operation source="field" to="temp.Data Task STAGE/output/Failed_Target_Rows">Failed Target Rows</operation>
+                              <operation source="field" to="temp.Data Task STAGE/output/Start_Time">Start Time</operation>
+                              <operation source="field" to="temp.Data Task STAGE/output/End_Time">End Time</operation>
+                              <operation source="field" to="temp.Data Task STAGE/output/Error_Message">Error Message</operation>
+                              <operation source="field" to="temp.Data Task STAGE/inout/v_sequence">v_sequence</operation>
+                              <operation source="field" to="temp.Data Task STAGE/inout/v_max_time">v_max_time</operation>
+                           </serviceOutput>
+                        </service>
+                        <link id="kkxccm4k" targetId="kkxccm4j"/>
+                        <events>
+                           <catch faultField="temp.Data Task STAGE/fault"
+                                  id="kkxccm44"
+                                  interrupting="true"
+                                  name="error"/>
+                           <catch faultField="temp.Data Task STAGE/fault"
+                                  id="kkxccm45"
+                                  interrupting="true"
+                                  name="warning"/>
+                        </events>
+                     </eventContainer>
+                     <container id="kkxccm4j" type="exclusive">
+                        <title>Decision Stage</title>
+                        <flow id="kkxccm4m">
+                           <eventContainer id="kkxccm5k">
+                              <service id="kkxccm5e">
+                                 <title>Data Task STATUS STAGE</title>
+                                 <serviceName>ICSExecuteDataTask</serviceName>
+                                 <serviceGUID/>
+                                 <serviceInput>
+                                    <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                                    <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                                    <parameter name="Task Name" source="constant" updatable="true">mt__cai_metering_status_stage</parameter>
+                                    <parameter name="GUID" source="constant" updatable="true">1ujZPJSelMNgIa3yvhfs4F</parameter>
+                                    <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                                    <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                                    <parameter name="taskField" source="nested">
+                                       <operation source="field" to="mt--cai-metering-status-stage">temp.Data Task STATUS STAGE</operation>
+                                    </parameter>
+                                 </serviceInput>
+                                 <serviceOutput>
+                                    <operation source="field" to="temp.Data Task STATUS STAGE/output/Object_Name">Object Name</operation>
+                                    <operation source="field" to="temp.Data Task STATUS STAGE/output/Run_Id">Run Id</operation>
+                                    <operation source="field" to="temp.Data Task STATUS STAGE/output/Log_Id">Log Id</operation>
+                                    <operation source="field" to="temp.Data Task STATUS STAGE/output/Task_Id">Task Id</operation>
+                                    <operation source="field" to="temp.Data Task STATUS STAGE/output/Task_Status">Task Status</operation>
+                                    <operation source="field"
+                                               to="temp.Data Task STATUS STAGE/output/Success_Source_Rows">Success Source Rows</operation>
+                                    <operation source="field"
+                                               to="temp.Data Task STATUS STAGE/output/Failed_Source_Rows">Failed Source Rows</operation>
+                                    <operation source="field"
+                                               to="temp.Data Task STATUS STAGE/output/Success_Target_Rows">Success Target Rows</operation>
+                                    <operation source="field"
+                                               to="temp.Data Task STATUS STAGE/output/Failed_Target_Rows">Failed Target Rows</operation>
+                                    <operation source="field" to="temp.Data Task STATUS STAGE/output/Start_Time">Start Time</operation>
+                                    <operation source="field" to="temp.Data Task STATUS STAGE/output/End_Time">End Time</operation>
+                                    <operation source="field" to="temp.Data Task STATUS STAGE/output/Error_Message">Error Message</operation>
+                                 </serviceOutput>
+                              </service>
+                              <link id="kkxccm6a" targetId="kkxccm69"/>
+                              <events>
+                                 <catch faultField="temp.Data Task STATUS STAGE/fault"
+                                        id="kkxccm5i"
+                                        interrupting="true"
+                                        name="error"/>
+                                 <catch faultField="temp.Data Task STATUS STAGE/fault"
+                                        id="kkxccm5j"
+                                        interrupting="true"
+                                        name="warning"/>
+                              </events>
+                           </eventContainer>
+                           <container id="kkxccm69" type="exclusive">
+                              <title>Decision API</title>
+                              <flow id="kkxccm6c">
+                                 <eventContainer id="kkxccm7l">
+                                    <service id="kkxccm7e">
+                                       <title>Data Task API</title>
+                                       <serviceName>ICSExecuteDataTask</serviceName>
+                                       <serviceGUID/>
+                                       <serviceInput>
+                                          <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                                          <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                                          <parameter name="Task Name" source="constant" updatable="true">mt_cai_metering_api_call</parameter>
+                                          <parameter name="GUID" source="constant" updatable="true">7S6gLf3BcjOg87QvnepMIm</parameter>
+                                          <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                                          <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                                          <parameter name="taskField" source="nested">
+                                             <operation source="field" to="mt-cai-metering-api-call">temp.Data Task API</operation>
+                                          </parameter>
+                                       </serviceInput>
+                                       <serviceOutput>
+                                          <operation source="field" to="temp.Data Task API/output/Object_Name">Object Name</operation>
+                                          <operation source="field" to="temp.Data Task API/output/Run_Id">Run Id</operation>
+                                          <operation source="field" to="temp.Data Task API/output/Log_Id">Log Id</operation>
+                                          <operation source="field" to="temp.Data Task API/output/Task_Id">Task Id</operation>
+                                          <operation source="field" to="temp.Data Task API/output/Task_Status">Task Status</operation>
+                                          <operation source="field" to="temp.Data Task API/output/Success_Source_Rows">Success Source Rows</operation>
+                                          <operation source="field" to="temp.Data Task API/output/Failed_Source_Rows">Failed Source Rows</operation>
+                                          <operation source="field" to="temp.Data Task API/output/Success_Target_Rows">Success Target Rows</operation>
+                                          <operation source="field" to="temp.Data Task API/output/Failed_Target_Rows">Failed Target Rows</operation>
+                                          <operation source="field" to="temp.Data Task API/output/Start_Time">Start Time</operation>
+                                          <operation source="field" to="temp.Data Task API/output/End_Time">End Time</operation>
+                                          <operation source="field" to="temp.Data Task API/output/Error_Message">Error Message</operation>
+                                       </serviceOutput>
+                                    </service>
+                                    <link id="kkxccm8c" targetId="kkxccm8b"/>
+                                    <events>
+                                       <catch faultField="temp.Data Task API/fault"
+                                              id="kkxccm7j"
+                                              interrupting="true"
+                                              name="error"/>
+                                       <catch faultField="temp.Data Task API/fault"
+                                              id="kkxccm7k"
+                                              interrupting="true"
+                                              name="warning"/>
+                                    </events>
+                                 </eventContainer>
+                                 <container id="kkxccm8b" type="exclusive">
+                                    <title>Decision API RETRY</title>
+                                    <flow id="kkxccm8e">
+                                       <eventContainer id="kkxccmdp">
+                                          <service id="kkxccmdh">
+                                             <title>Data Task STATUS API</title>
+                                             <serviceName>ICSExecuteDataTask</serviceName>
+                                             <serviceGUID/>
+                                             <serviceInput>
+                                                <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                                                <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                                                <parameter name="Task Name" source="constant" updatable="true">mt__cai_metering_status_end</parameter>
+                                                <parameter name="GUID" source="constant" updatable="true">bZ14E7CVYcHiflLMngRw6V</parameter>
+                                                <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                                                <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                                                <parameter name="taskField" source="nested">
+                                                   <operation source="field" to="mt--cai-metering-status-end">temp.Data Task STATUS API</operation>
+                                                </parameter>
+                                             </serviceInput>
+                                             <serviceOutput>
+                                                <operation source="field" to="temp.Data Task STATUS API/output/Object_Name">Object Name</operation>
+                                                <operation source="field" to="temp.Data Task STATUS API/output/Run_Id">Run Id</operation>
+                                                <operation source="field" to="temp.Data Task STATUS API/output/Log_Id">Log Id</operation>
+                                                <operation source="field" to="temp.Data Task STATUS API/output/Task_Id">Task Id</operation>
+                                                <operation source="field" to="temp.Data Task STATUS API/output/Task_Status">Task Status</operation>
+                                                <operation source="field"
+                                                           to="temp.Data Task STATUS API/output/Success_Source_Rows">Success Source Rows</operation>
+                                                <operation source="field" to="temp.Data Task STATUS API/output/Failed_Source_Rows">Failed Source Rows</operation>
+                                                <operation source="field"
+                                                           to="temp.Data Task STATUS API/output/Success_Target_Rows">Success Target Rows</operation>
+                                                <operation source="field" to="temp.Data Task STATUS API/output/Failed_Target_Rows">Failed Target Rows</operation>
+                                                <operation source="field" to="temp.Data Task STATUS API/output/Start_Time">Start Time</operation>
+                                                <operation source="field" to="temp.Data Task STATUS API/output/End_Time">End Time</operation>
+                                                <operation source="field" to="temp.Data Task STATUS API/output/Error_Message">Error Message</operation>
+                                             </serviceOutput>
+                                          </service>
+                                          <link id="kkxccmef" targetId="kkxccmee"/>
+                                          <events>
+                                             <catch faultField="temp.Data Task STATUS API/fault"
+                                                    id="kkxccmdn"
+                                                    interrupting="true"
+                                                    name="error">
+                                                <suspend/>
+                                             </catch>
+                                             <catch faultField="temp.Data Task STATUS API/fault"
+                                                    id="kkxccmdo"
+                                                    interrupting="true"
+                                                    name="warning"/>
+                                          </events>
+                                       </eventContainer>
+                                       <container id="kkxccmee" type="exclusive">
+                                          <title>Decision STATUS API</title>
+                                          <flow id="kkxccmeh">
+                                             <link id="kkxccmei" targetId="kkxccmee" type="containerLink"/>
+                                          </flow>
+                                          <flow id="kkxccmek">
+                                             <service id="kows6vli">
+                                                <title>NotifyApiStatusFailure</title>
+                                                <serviceName>emailNotificationService</serviceName>
+                                                <serviceGUID/>
+                                                <serviceInput>
+                                                   <parameter name="Email To" source="constant">vig@informatica.com</parameter>
+                                                   <parameter name="Email Cc" source="constant"/>
+                                                   <parameter name="Email Subject" source="constant">ALERT: CAI Metering Taskflow failure</parameter>
+                                                   <parameter name="Email Content Type" source="constant">html</parameter>
+                                                   <parameter name="Email Body" source="constant">&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;CAI Metering taskflow has encountered an error:&lt;/p&gt;
+&lt;p&gt;Task: Data Task STATUS API {$temp.retry}&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Thanks,&lt;br&gt;CAI Ops&lt;/p&gt;</parameter>
+                                                </serviceInput>
+                                                <serviceOutput/>
+                                                <link id="kows6vlj" targetId="kkxccmgi"/>
+                                             </service>
+                                             <wait id="kkxccmgi">
+                                                <title>Wait 3 sec</title>
+                                                <duration source="formula">
+                                                   <function name="duration_expression">
+                                                      <arg name="value">3</arg>
+                                                      <arg name="scale">S</arg>
+                                                      <arg name="businessDays"/>
+                                                   </function>
+                                                </duration>
+                                                <link id="kkxccmgj" targetId="kkxccmg9"/>
+                                             </wait>
+                                             <assignment id="kkxccmg9">
+                                                <title>Assignment STATUS API RETRY</title>
+                                                <operation source="formula" to="temp.count status">
+                                                   <expression language="XQuery">$temp.countstatus + 1</expression>
+                                                </operation>
+                                                <link id="kkxccmi7" targetId="kkxccmi6"/>
+                                             </assignment>
+                                             <container id="kkxccmi6" type="exclusive">
+                                                <title>Decision STATUS API COUNT</title>
+                                                <flow id="kkxccmi9">
+                                                   <jumpTo id="kkxccmjm">
+                                                      <link id="kkxccmjn" targetId="kkxccmdp"/>
+                                                   </jumpTo>
+                                                </flow>
+                                                <flow id="kkxccmic">
+                                                   <end id="kkxccmk4">
+                                                      <title>End Status API</title>
+                                                   </end>
+                                                </flow>
+                                                <link id="kkxccmi8" targetId="kkxccmi9" type="containerLink">
+                                                   <condition source="formula">
+                                                      <function name="less-or-equals">
+                                                         <arg name="left">{$temp.countstatus}</arg>
+                                                         <arg name="right">{$temp.retry }</arg>
+                                                      </function>
+                                                   </condition>
+                                                </link>
+                                                <link id="kkxccmib" targetId="kkxccmic" type="containerLink"/>
+                                             </container>
+                                          </flow>
+                                          <link id="kkxccmeg" targetId="kkxccmeh" type="containerLink">
+                                             <condition source="formula">
+                                                <function name="string-equals">
+                                                   <arg name="left">{$temp.DataTaskSTATUSAPI[1]/output[1]/Task_Status}</arg>
+                                                   <arg name="right">1</arg>
+                                                </function>
+                                             </condition>
+                                          </link>
+                                          <link id="kkxccmej" targetId="kkxccmek" type="containerLink"/>
+                                       </container>
+                                       <link id="kkxccm8f" targetId="kkxccm8b" type="containerLink"/>
+                                    </flow>
+                                    <flow id="kkxccm8h">
+                                       <service id="kows6vox">
+                                          <title>NotifyApiFailure</title>
+                                          <serviceName>emailNotificationService</serviceName>
+                                          <serviceGUID/>
+                                          <serviceInput>
+                                             <parameter name="Email To" source="constant">vig@informatica.com</parameter>
+                                             <parameter name="Email Cc" source="constant"/>
+                                             <parameter name="Email Subject" source="constant">ALERT: CAI Metering Taskflow failure</parameter>
+                                             <parameter name="Email Content Type" source="constant">html</parameter>
+                                             <parameter name="Email Body" source="constant">&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;CAI Metering taskflow has encountered an error:&lt;/p&gt;
+&lt;p&gt;Task: Data Task API {$temp.retry}&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Thanks,&lt;br&gt;CAI Ops&lt;/p&gt;</parameter>
+                                          </serviceInput>
+                                          <serviceOutput/>
+                                          <link id="kows6voy" targetId="kkxccm9j"/>
+                                       </service>
+                                       <wait id="kkxccm9j">
+                                          <title>Wait 10 sec</title>
+                                          <duration source="formula">
+                                             <function name="duration_expression">
+                                                <arg name="value">10</arg>
+                                                <arg name="scale">S</arg>
+                                                <arg name="businessDays"/>
+                                             </function>
+                                          </duration>
+                                          <link id="kkxccma7" targetId="kkxccma6"/>
+                                       </wait>
+                                       <assignment id="kkxccma6">
+                                          <title>Assignment API RETRY</title>
+                                          <operation source="formula" to="temp.count api">
+                                             <expression language="XQuery">$temp.countapi + 1</expression>
+                                          </operation>
+                                          <link id="kkxccmb7" targetId="kkxccmb6"/>
+                                       </assignment>
+                                       <container id="kkxccmb6" type="exclusive">
+                                          <title>Decision API COUNT</title>
+                                          <flow id="kkxccmb9">
+                                             <jumpTo id="kkxccmcq">
+                                                <link id="kkxccmcr" targetId="kkxccm7l"/>
+                                             </jumpTo>
+                                          </flow>
+                                          <flow id="kkxccmbc">
+                                             <end id="kkxccmd6">
+                                                <title>End API</title>
+                                             </end>
+                                          </flow>
+                                          <link id="kkxccmb8" targetId="kkxccmb9" type="containerLink">
+                                             <condition source="formula">
+                                                <function name="less-or-equals">
+                                                   <arg name="left">{$temp.countapi}</arg>
+                                                   <arg name="right">{$temp.retry }</arg>
+                                                </function>
+                                             </condition>
+                                          </link>
+                                          <link id="kkxccmbb" targetId="kkxccmbc" type="containerLink"/>
+                                       </container>
+                                    </flow>
+                                    <link id="kkxccm8d" targetId="kkxccm8e" type="containerLink">
+                                       <condition source="formula">
+                                          <function name="string-equals">
+                                             <arg name="left">{$temp.DataTaskAPI[1]/output[1]/Task_Status}</arg>
+                                             <arg name="right">1</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="kkxccm8g" targetId="kkxccm8h" type="containerLink"/>
+                                 </container>
+                                 <link id="kkxccm6d" targetId="kkxccm69" type="containerLink"/>
+                              </flow>
+                              <flow id="kkxccm6f">
+                                 <service id="kowqcqag">
+                                    <title>NotifyStageStatusFailure</title>
+                                    <serviceName>emailNotificationService</serviceName>
+                                    <serviceGUID/>
+                                    <serviceInput>
+                                       <parameter name="Email To" source="constant">vig@informatica.com</parameter>
+                                       <parameter name="Email Cc" source="constant"/>
+                                       <parameter name="Email Subject" source="constant">ALERT: CAI Metering Taskflow failure</parameter>
+                                       <parameter name="Email Content Type" source="constant">html</parameter>
+                                       <parameter name="Email Body" source="constant">&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;CAI Metering taskflow has encountered an error:&lt;/p&gt;
+&lt;p&gt;Task: Data Task STATUS STAGE&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Thanks,&lt;br&gt;CAI Ops&lt;/p&gt;</parameter>
+                                    </serviceInput>
+                                    <serviceOutput/>
+                                    <link id="kowqcqah" targetId="kkxccm75"/>
+                                 </service>
+                                 <end id="kkxccm75">
+                                    <title>End Status Stage</title>
+                                 </end>
+                              </flow>
+                              <link id="kkxccm6b" targetId="kkxccm6c" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="string-equals">
+                                       <arg name="left">{$temp.DataTaskSTATUSSTAGE[1]/output[1]/Task_Status}</arg>
+                                       <arg name="right">1</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="kkxccm6e" targetId="kkxccm6f" type="containerLink"/>
+                           </container>
+                           <link id="kkxccm4n" targetId="kkxccm4j" type="containerLink"/>
+                        </flow>
+                        <flow id="kkxccm4p">
+                           <service id="kows6vn5">
+                              <title>NotifyStageFailure</title>
+                              <serviceName>emailNotificationService</serviceName>
+                              <serviceGUID/>
+                              <serviceInput>
+                                 <parameter name="Email To" source="constant">vig@informatica.com</parameter>
+                                 <parameter name="Email Cc" source="constant"/>
+                                 <parameter name="Email Subject" source="constant">ALERT: CAI Metering Taskflow failure</parameter>
+                                 <parameter name="Email Content Type" source="constant">html</parameter>
+                                 <parameter name="Email Body" source="constant">&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;CAI Metering taskflow has encountered an error:&lt;/p&gt;
+&lt;p&gt;Task: Data Task STAGE&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Thanks,&lt;br&gt;CAI Ops&lt;/p&gt;</parameter>
+                              </serviceInput>
+                              <serviceOutput/>
+                              <link id="kows6vn6" targetId="kows6vc7"/>
+                           </service>
+                           <eventContainer id="kows6vc7">
+                              <service id="kows6vbu">
+                                 <title>Data Task STATUS STAGE FAIL</title>
+                                 <serviceName>ICSExecuteDataTask</serviceName>
+                                 <serviceGUID/>
+                                 <serviceInput>
+                                    <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                                    <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                                    <parameter name="Task Name" source="constant" updatable="true">mt__cai_metering_status_stage_fail</parameter>
+                                    <parameter name="GUID" source="constant" updatable="true">hYuyNkw1aYih4MVLvDPLI2</parameter>
+                                    <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                                    <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                                    <parameter name="taskField" source="nested">
+                                       <operation source="field" to="mt--cai-metering-status-stage-fail">temp.Data Task STATUS STAGE FAIL</operation>
+                                    </parameter>
+                                 </serviceInput>
+                                 <serviceOutput>
+                                    <operation source="field" to="temp.Data Task STATUS STAGE FAIL/output/Object_Name">Object Name</operation>
+                                    <operation source="field" to="temp.Data Task STATUS STAGE FAIL/output/Run_Id">Run Id</operation>
+                                    <operation source="field" to="temp.Data Task STATUS STAGE FAIL/output/Log_Id">Log Id</operation>
+                                    <operation source="field" to="temp.Data Task STATUS STAGE FAIL/output/Task_Id">Task Id</operation>
+                                    <operation source="field" to="temp.Data Task STATUS STAGE FAIL/output/Task_Status">Task Status</operation>
+                                    <operation source="field"
+                                               to="temp.Data Task STATUS STAGE FAIL/output/Success_Source_Rows">Success Source Rows</operation>
+                                    <operation source="field"
+                                               to="temp.Data Task STATUS STAGE FAIL/output/Failed_Source_Rows">Failed Source Rows</operation>
+                                    <operation source="field"
+                                               to="temp.Data Task STATUS STAGE FAIL/output/Success_Target_Rows">Success Target Rows</operation>
+                                    <operation source="field"
+                                               to="temp.Data Task STATUS STAGE FAIL/output/Failed_Target_Rows">Failed Target Rows</operation>
+                                    <operation source="field" to="temp.Data Task STATUS STAGE FAIL/output/Start_Time">Start Time</operation>
+                                    <operation source="field" to="temp.Data Task STATUS STAGE FAIL/output/End_Time">End Time</operation>
+                                    <operation source="field"
+                                               to="temp.Data Task STATUS STAGE FAIL/output/Error_Message">Error Message</operation>
+                                 </serviceOutput>
+                              </service>
+                              <link id="kows6vjc" targetId="kkxccm57"/>
+                              <events>
+                                 <catch faultField="temp.Data Task STATUS STAGE FAIL/fault"
+                                        id="kkxccm5i"
+                                        interrupting="true"
+                                        name="error"/>
+                                 <catch faultField="temp.Data Task STATUS STAGE FAIL/fault"
+                                        id="kkxccm5j"
+                                        interrupting="true"
+                                        name="warning"/>
+                              </events>
+                           </eventContainer>
+                           <end id="kkxccm57">
+                              <title>End Stage</title>
+                           </end>
+                        </flow>
+                        <link id="kkxccm4l" targetId="kkxccm4m" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$temp.DataTaskSTAGE[1]/output[1]/Task_Status}</arg>
+                                 <arg name="right">1</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kkxccm4o" targetId="kkxccm4p" type="containerLink"/>
+                     </container>
+                     <link id="kkxccm34" targetId="kkxccm2z" type="containerLink"/>
+                  </flow>
+                  <flow id="kkxccm36">
+                     <service id="kowqcq98">
+                        <title>NotifyNoOp</title>
+                        <serviceName>emailNotificationService</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="Email To" source="constant">vig@informatica.com</parameter>
+                           <parameter name="Email Cc" source="constant"/>
+                           <parameter name="Email Subject" source="constant">ALERT: CAI Metering Taskflow completed without running tasks</parameter>
+                           <parameter name="Email Content Type" source="constant">html</parameter>
+                           <parameter name="Email Body" source="constant">&lt;p&gt;Hi,&lt;br&gt;&lt;br&gt;CAI Metering taskflow has completed without running any tasks. This means there were failures in some previous taskflow run.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Please check the previous runs and update the status file (metering_task_status_stage.csv) after fixing the issue.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Thanks,&lt;/p&gt;
+&lt;p&gt;CAI Ops&lt;/p&gt;</parameter>
+                        </serviceInput>
+                        <serviceOutput/>
+                        <link id="kowqcq99" targetId="kkxccm4d"/>
+                     </service>
+                     <end id="kkxccm4d">
+                        <title>End Begin</title>
+                     </end>
+                  </flow>
+                  <link id="kkxccm32" targetId="kkxccm33" type="containerLink">
+                     <condition source="formula">
+                        <function name="greater-than">
+                           <arg name="left">{$temp.DataTaskSTATUSBEGIN[1]/output[1]/Success_Source_Rows}</arg>
+                           <arg name="right">{0}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kkxccm35" targetId="kkxccm36" type="containerLink"/>
+                  <link id="kkxccm31" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt--cai-metering-status-begin"
+                              isByCopy="true"
+                              name="mt--cai-metering-status-begin">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters" name="input" type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            type="reference"/>
+                     <field label="Output Parameters" name="output" type="reference"/>
+                     <field label="Fault" name="fault" type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-cai-metering-api-stage"
+                              isByCopy="true"
+                              name="mt-cai-metering-api-stage">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters" name="input" type="reference"/>
+                     <field label="InOut Parameters" name="inout" type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            type="reference"/>
+                     <field label="Output Parameters" name="output" type="reference"/>
+                     <field label="Fault" name="fault" type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt--cai-metering-status-stage"
+                              isByCopy="true"
+                              name="mt--cai-metering-status-stage">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters" name="input" type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            type="reference"/>
+                     <field label="Output Parameters" name="output" type="reference"/>
+                     <field label="Fault" name="fault" type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-cai-metering-api-call"
+                              isByCopy="true"
+                              name="mt-cai-metering-api-call">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters" name="input" type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            type="reference"/>
+                     <field label="Output Parameters" name="output" type="reference"/>
+                     <field label="Fault" name="fault" type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt--cai-metering-status-end"
+                              isByCopy="true"
+                              name="mt--cai-metering-status-end">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters" name="input" type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            type="reference"/>
+                     <field label="Output Parameters" name="output" type="reference"/>
+                     <field label="Fault" name="fault" type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt--cai-metering-status-stage-fail"
+                              isByCopy="true"
+                              name="mt--cai-metering-status-stage-fail">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters" name="input" type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            type="reference"/>
+                     <field label="Output Parameters" name="output" type="reference"/>
+                     <field label="Fault" name="fault" type="reference"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>b507PddOYafedZHD3K65An</types1:GUID>
+      <types1:DisplayName>taskflow__cai_metering_template</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-06-23T06:43:05.16Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

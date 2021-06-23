@@ -1,0 +1,162 @@
+{
+  "objectInfo" : {
+    "id" : "b507PddOYafedZHD3K65An",
+    "name" : "taskflow__cai_metering_template",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "zFMi4tciSrZMSPf-gt-134395-2021-06-15T11:47:55.406Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "7S6gLf3BcjOg87QvnepMIm",
+    "name" : "mt_cai_metering_api_call",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0126NZ0Z000000000019"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Metering/Tasks"
+  }, {
+    "id" : "473LcIdIwQJfVHHXNBs1UF",
+    "name" : "mt__cai_metering_status_begin",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0126NZ0Z00000000001B"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "SOURCE: metering_task_status_stage.csv  \r\nTARGET: metering_check_load.csv\r\nFILTER: TRUE",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Metering/Tasks"
+  }, {
+    "id" : "5hIV57Zs3wkhC2rP6yWdEr",
+    "name" : "mt_cai_metering_api_stage",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0126NZ0Z00000000001D"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Metering/Tasks"
+  }, {
+    "id" : "1ujZPJSelMNgIa3yvhfs4F",
+    "name" : "mt__cai_metering_status_stage",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0126NZ0Z00000000001A"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "SOURCE: src_gen_one_row.csv  \r\nTARGET: metering_task_status_stage.csv\r\nFILTER: FALSE",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Metering/Tasks"
+  }, {
+    "id" : "bZ14E7CVYcHiflLMngRw6V",
+    "name" : "mt__cai_metering_status_end",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0126NZ0Z00000000001C"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "SOURCE: src_gen_one_row.csv  \r\nTARGET:  metering_task_status_stage.csv\r\nFILTER: TRUE",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Metering/Tasks"
+  }, {
+    "id" : "hYuyNkw1aYih4MVLvDPLI2",
+    "name" : "mt__cai_metering_status_stage_fail",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0126NZ0Z000000000018"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "SOURCE: src_gen_one_row.csv  \r\nTARGET: metering_task_status_stage.csv\r\nFILTER: FALSE",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Metering/Tasks"
+  } ]
+}

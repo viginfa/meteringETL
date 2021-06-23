@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "8fyC7lAj9BzdPhHNp42pam",
+    "name" : "m__metering_status_template",
+    "type" : "DTEMPLATE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0126NZ1700000000000U"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "Status begin -- \nSOURCE: metering_task_status_stage.csv  \nTARGET: metering_check_load.csv\nStatus stage -- \nSOURCE: src_gen_one_row.csv  \nTARGET: metering_task_status_stage.csv\nStaus end --\nSOURCE: src_gen_one_row.csv  \nTARGET:  metering_task_status_stage.csv",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "objectRefs" : [ ]
+}
